@@ -72,7 +72,7 @@ function Index({ addMessage }) {
     const sendToBackend = (data) => {
         console.log("Sending to Backend")
         axios
-            .post("http://192.168.10.149:30005/process_audio", data)
+            .post("/process_audio", data)
             .then((response) => {
                 // localStorage.setItem("audio", response.data.audio_response_buffer);
                 console.log(response)
