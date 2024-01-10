@@ -72,7 +72,7 @@ function Index({ addMessage }) {
     const sendToBackend = (data) => {
         console.log("Sending to Backend")
         axios
-            .post("/process_audio", data)
+            .post("https://voicebot-service.antiers.world/process_audio", data)
             .then((response) => {
                 // localStorage.setItem("audio", response.data.audio_response_buffer);
                 console.log(response)
