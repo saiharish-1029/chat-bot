@@ -3,7 +3,7 @@ import axios from "axios"
 import Loader from "react-js-loader"
 
 let chunks = [];
-function Index({ addMessage }) {
+function Index({ addMessage,apiUrl }) {
     const [mediaRecorder, setMediaRecorder] = useState(null)
     const [mediaRecorderStatus, setMediaRecorderStatus] = useState(false)
     const [mediaRecordingStatus, setMediaRecordingStatus] = useState(false)
@@ -72,7 +72,7 @@ function Index({ addMessage }) {
     const sendToBackend = (data) => {
         console.log("Sending to Backend")
         axios
-            .post("https://voicebot-service.antiers.world/process_audio", data)
+            .post(apiUrl, data)
             .then((response) => {
                 // localStorage.setItem("audio", response.data.audio_response_buffer);
                 console.log(response)

@@ -14,6 +14,11 @@ function Chatbot() {
   const [audioState, setAudioState] = useState(null)
   const [audioLoading, setAudioLoading] = useState(false)
   let [audioURL, isRecording, startRecording, stopRecording, audio] = useRecorder();
+  const [language, setLanguage] = useState("Hindi")
+  const apis = {
+    Hindi: "https://voicebot-service.antiers.world/process_audio",
+    English: "https://voicebot-service.antiers.world/process_audio_english",
+  }
   const handleInputChange = (e) => {
     setInputText(e.target.value)
   };
@@ -65,10 +70,16 @@ function Chatbot() {
     <div className="chatbot-container">
       <div className="chatbot-animator">
         {chatBotStatus ? <div className="chatbot">
-          <div className="chatbot-header">
-            <div />
-            TATA Steel Voice Bot
-            <i className="fas fa-window-close close" onClick={() => setChatBotStatus(false)}></i>
+          <div>
+            <div className="chatbot-header">
+              <div />
+              TATA Steel Voice Bot
+              <i className="fas fa-window-close close" onClick={() => setChatBotStatus(false)}></i>
+            </div>
+            <select value={language} onChange={e => setLanguage(e.target.value)}>
+              <option value="Hindi">Hindi</option>
+              <option value="English">English</option>
+            </select>
           </div>
           <div className="chatbot-messages">
             {messages.map((message, index) => (
