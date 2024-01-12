@@ -87,19 +87,21 @@ function Index({ addMessage, apiUrl, language }) {
             });
     }
 
+    const startRecording = () => {
+        audioS?.stop()
+        setMediaRecordingStatus(true)
+        mediaRecorder?.start()
+        console.log(mediaRecorder.state);
+    }
+
     if (!mediaRecorderStatus) return <div>not</div>
 
     return (
         <div className="promo-video">
             <div>
-                <button type="button" className="send-button" disabled={loading} onMouseDown={() => {
-                    audioS?.stop()
-                    setMediaRecordingStatus(true)
-                    mediaRecorder?.start()
-                    console.log(mediaRecorder.state);
-                }} onMouseUp={() => onStopRecording()}>{loading ? <div className='loader'>
+                <button type="button" className="send-button" disabled={loading} onClick={mediaRecordingStatus ? onStopRecording : startRecording}>{loading ? <div className='loader'>
                     <Loader type="spinner-circle" bgColor={"white"} color={"white"} size={35} />
-                </div> : <i className="fas fa-microphone"></i>}</button>
+                </div> : mediaRecordingStatus ? <i className='fas fa-stop'></i> : <i className='fas fa-microphone'></i>}</button>
                 {mediaRecordingStatus ? <div>
                     <div className="waves wave-1" />
                     <div className="waves wave-2" />
