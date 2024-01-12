@@ -97,7 +97,7 @@ function Chatbot() {
         </div> */}
           <form className="form" onSubmit={handleSubmit}>
             <div className="promo-video">
-              <Index addMessage={addMessage} />
+              <Index addMessage={addMessage} apiUrl={apis[language]} />
             </div>
           </form>
         </div> : <div className="chatbot-icon" onClick={() => setChatBotStatus(true)}><img src={tata} width="50px" /></div>}
