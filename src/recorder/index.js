@@ -3,7 +3,7 @@ import axios from "axios"
 import Loader from "react-js-loader"
 
 let chunks = [];
-function Index({ addMessage,apiUrl }) {
+function Index({ addMessage, apiUrl, language }) {
     const [mediaRecorder, setMediaRecorder] = useState(null)
     const [mediaRecorderStatus, setMediaRecorderStatus] = useState(false)
     const [mediaRecordingStatus, setMediaRecordingStatus] = useState(false)
@@ -78,7 +78,7 @@ function Index({ addMessage,apiUrl }) {
                 console.log(response)
                 // setMyAudioSrc(response.data.audio_response_buffer);
                 replayPlayer(response.data.audio_response_buffer)
-                addMessage("bot", response.data.text_response, "text")
+                addMessage("bot", response.data.text_response, "text", language)
                 setLoading(false)
             })
             .catch((error) => {
