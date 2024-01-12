@@ -8,7 +8,7 @@ function Index({ addMessage, apiUrl, language }) {
     const [mediaRecorderStatus, setMediaRecorderStatus] = useState(false)
     const [mediaRecordingStatus, setMediaRecordingStatus] = useState(false)
     const [loading, setLoading] = useState(false)
-    // const [audioS, setAudio] = useState(null)
+    const [audioS, setAudioSource] = useState(null)
     useEffect(() => {
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
@@ -37,7 +37,7 @@ function Index({ addMessage, apiUrl, language }) {
             formData.append("audio", blob, "recording.mp3")
             sendToBackend(formData)
             // const audioURL = window.URL.createObjectURL(blob);
-            // setAudio(audioURL)
+            // setAudioSource(audioURL)
         };
         // }
     }
@@ -61,7 +61,7 @@ function Index({ addMessage, apiUrl, language }) {
 
             // Connect the AudioBufferSourceNode to the AudioContext's destination (e.g., speakers)
             audioSource.connect(audioContext.destination);
-
+            setAudioSource(audioSource)
             // Start playing the audio
             audioSource.start();
         }, (error) => {
@@ -93,6 +93,7 @@ function Index({ addMessage, apiUrl, language }) {
         <div className="promo-video">
             <div>
                 <button type="button" className="send-button" disabled={loading} onMouseDown={() => {
+                    audioS?.stop()
                     setMediaRecordingStatus(true)
                     mediaRecorder?.start()
                     console.log(mediaRecorder.state);

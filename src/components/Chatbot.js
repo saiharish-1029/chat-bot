@@ -20,10 +20,10 @@ function Chatbot() {
   const [language, setLanguage] = useState("Hindi")
   const [languageTab, setLanguageTab] = useState(0)
   const apis = {
-    // Hindi: "https://voicebot.tatasteelretailverse.com/process_audio_hindi",
-    // English: "https://voicebot.tatasteelretailverse.com/process_audio_english",
-    Hindi: "http://192.168.10.54:5050/process_audio_gpt4",
-    English: "http://192.168.10.54:5010/process_audio_gpt3.5",
+    Hindi: "https://voicebot.tatasteelretailverse.com/process_audio_hindi",
+    English: "https://voicebot.tatasteelretailverse.com/process_audio_english",
+    // Hindi: "http://192.168.10.54:5050/process_audio_gpt4",
+    // English: "http://192.168.10.54:5040/process_audio_gpt3.5",
   }
   const handleInputChange = (e) => {
     setInputText(e.target.value)
