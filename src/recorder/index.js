@@ -3,7 +3,7 @@ import axios from "axios"
 import Loader from "react-js-loader"
 
 let chunks = [];
-function Index({ addMessage, apiUrl, language }) {
+function Index({ addMessage, apiUrl }) {
     const [mediaRecorder, setMediaRecorder] = useState(null)
     const [mediaRecorderStatus, setMediaRecorderStatus] = useState(false)
     const [mediaRecordingStatus, setMediaRecordingStatus] = useState(false)
@@ -78,7 +78,7 @@ function Index({ addMessage, apiUrl, language }) {
                 console.log(response)
                 // setMyAudioSrc(response.data.audio_response_buffer);
                 replayPlayer(response.data.audio_response_buffer)
-                addMessage("bot", response.data.text_response, "text", language)
+                addMessage("bot", response.data.text_response, "text", "Voice")
                 setLoading(false)
             })
             .catch((error) => {
@@ -99,7 +99,7 @@ function Index({ addMessage, apiUrl, language }) {
     return (
         <div className="promo-video">
             <div>
-                <button type="button" className="send-button" disabled={loading} onClick={mediaRecordingStatus ? onStopRecording : startRecording}>{loading ? <div className='loader'>
+                <button type="button" className="send-voice" disabled={loading} onClick={mediaRecordingStatus ? onStopRecording : startRecording}>{loading ? <div className='loader'>
                     <Loader type="spinner-circle" bgColor={"white"} color={"white"} size={35} />
                 </div> : mediaRecordingStatus ? <i className='fas fa-stop'></i> : <i className='fas fa-microphone'></i>}</button>
                 {mediaRecordingStatus ? <div>
