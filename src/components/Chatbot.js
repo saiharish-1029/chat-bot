@@ -22,7 +22,7 @@ function Chatbot() {
   const [tab, setTab] = useState("Chat")
   const [languageTab, setLanguageTab] = useState(0)
   const apis = {
-    Chat: "http://192.168.10.54:5010/chat",
+    Chat: "https://voicebot.tatasteelretailverse.com/chat",
     Voice: "https://voicebot.tatasteelretailverse.com/process_audio_english",
     // Hindi: "http://192.168.10.54:5050/process_audio_gpt4",
     // English: "http://192.168.10.54:5040/process_audio_gpt3.5",
